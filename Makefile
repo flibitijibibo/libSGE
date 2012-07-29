@@ -15,10 +15,12 @@ ifeq ($(UNAME), Darwin)
 	LIBNAMEAPI = libSGE.$(API_VER).dylib
 	LIBNAMEVER = libSGE.$(API_VER).$(SGE_VER).dylib
 	LIBDIR = lib
+	LIBFLAG = -install_name
 else
 	LIBNAME = libSGE.so
 	LIBNAMEAPI = libSGE.so.$(API_VER)
 	LIBNAMEVER = libSGE.so.$(API_VER).$(SGE_VER)
+	LIBFLAG = -soname
 	ifeq ($(FORCE32), y)
 		LIBDIR = lib
 	else
@@ -40,7 +42,7 @@ $(OBJECTS):	%.o:%.cpp %.h   #Each object depends on thier .cpp and .h file
 	$(CXX) $(CFLAGS) -c $<
 
 shared: all
-	$(CXX) $(CFLAGS) -Wl,-soname,$(LIBNAMEAPI) -fpic -fPIC -shared -o $(LIBNAME) $(OBJECTS) $(LIBS)
+	$(CXX) $(CFLAGS) -Wl,$(LIBFLAG),$(LIBNAMEAPI) -fpic -fPIC -shared -o $(LIBNAME) $(OBJECTS) $(LIBS)
 
 shared-strip:	shared
 	@strip $(LIBNAME)
