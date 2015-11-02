@@ -11,15 +11,15 @@ API_VER = 0
 UNAME = $(shell uname)
 ARCH = $(shell uname -m)
 ifeq ($(UNAME), Darwin)
-	LIBNAME = libSGE.dylib
-	LIBNAMEAPI = libSGE.$(API_VER).dylib
-	LIBNAMEVER = libSGE.$(API_VER).$(SGE_VER).dylib
+	LIBNAME = libSGE2.dylib
+	LIBNAMEAPI = libSGE2.$(API_VER).dylib
+	LIBNAMEVER = libSGE2.$(API_VER).$(SGE_VER).dylib
 	LIBDIR = lib
 	LIBFLAG = -install_name
 else
-	LIBNAME = libSGE.so
-	LIBNAMEAPI = libSGE.so.$(API_VER)
-	LIBNAMEVER = libSGE.so.$(API_VER).$(SGE_VER)
+	LIBNAME = libSGE2.so
+	LIBNAMEAPI = libSGE2.so.$(API_VER)
+	LIBNAMEVER = libSGE2.so.$(API_VER).$(SGE_VER)
 	LIBFLAG = -soname
 	ifeq ($(FORCE32), y)
 		LIBDIR = lib
@@ -36,7 +36,7 @@ endif
 OBJECTS=sge_surface.o sge_primitives.o sge_tt_text.o sge_bm_text.o sge_misc.o sge_textpp.o sge_blib.o sge_rotation.o sge_collision.o sge_shape.o
 
 all:	config $(OBJECTS) 
-	@ar rsc libSGE.a $(OBJECTS)
+	@ar rsc libSGE2.a $(OBJECTS)
 
 $(OBJECTS):	%.o:%.cpp %.h   #Each object depends on thier .cpp and .h file
 	$(CXX) $(CFLAGS) -c $<
@@ -50,7 +50,7 @@ shared-strip:	shared
 # Building a dll... I have no idea how to do this, but it should be something like below.
 dll:	config $(OBJECTS)
 	dlltool --output-def SGE.def $(OBJECTS)
-	dllwrap --driver-name $(CXX) -o SGE.dll --def SGE.def --output-lib libSGE.a --dllname SGE.dll $(OBJECTS) $(LIBS)
+	dllwrap --driver-name $(CXX) -o SGE.dll --def SGE.def --output-lib libSGE2.a --dllname SGE.dll $(OBJECTS) $(LIBS)
 
 dll-strip:	dll
 	@strip SGE.dll
@@ -99,7 +99,7 @@ install:	shared
 	@mkdir -p $(PREFIX_H)
 	install -c -m 644 sge*.h $(PREFIX_H)
 	@mkdir -p $(PREFIX)/$(LIBDIR)
-	install -c -m 644 libSGE.a $(PREFIX)/$(LIBDIR)
+	install -c -m 644 libSGE2.a $(PREFIX)/$(LIBDIR)
 	install -c $(LIBNAME) $(PREFIX)/$(LIBDIR)/$(LIBNAMEVER)
 	@cd $(PREFIX)/$(LIBDIR);\
 	ln -sf $(LIBNAMEVER) $(LIBNAMEAPI);\

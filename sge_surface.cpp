@@ -87,6 +87,8 @@ Uint8 sge_getLock(void)
 //==================================================================================
 void sge_UpdateRect(SDL_Surface *screen, Sint16 x, Sint16 y, Uint16 w, Uint16 h)
 {
+	SDL_assert(0 && "sge_UpdateRect");
+/*
 	if(_sge_update!=1 || screen != SDL_GetVideoSurface()){return;}
 	
 	if(x>=screen->w || y>=screen->h){return;}
@@ -103,6 +105,7 @@ void sge_UpdateRect(SDL_Surface *screen, Sint16 x, Sint16 y, Uint16 w, Uint16 h)
 	if(b+y > screen->h){b=screen->h-y;}
 
 	SDL_UpdateRect(screen,x,y,a,b);
+*/
 }
 
 
@@ -592,8 +595,11 @@ void sge_ClearSurface(SDL_Surface *Surface, Uint32 color)
 
 	SDL_FillRect(Surface,NULL, color);
 
+	SDL_assert(0 && "sge_ClearSurface");
+/*
 	if(_sge_update!=1){return;}
 	SDL_UpdateRect(Surface, 0,0,0,0);
+*/
 }
 
 
@@ -659,10 +665,10 @@ int sge_BlitTransparent(SDL_Surface *Src, SDL_Surface *Dest, Sint16 SrcX, Sint16
 	#endif
 
  	/* Set the color to be transparent */
- 	SDL_SetColorKey(Src, SDL_SRCCOLORKEY, Clear);
+ 	SDL_SetColorKey(Src, SDL_TRUE, Clear);
 
  	/* Set the alpha value */
- 	SDL_SetAlpha(Src, SDL_SRCALPHA, Alpha);
+ 	SDL_SetSurfaceAlphaMod(Src, Alpha);
 
 	/* Blit */	
  	ret=SDL_BlitSurface(Src, &src, Dest, &dest);
@@ -676,8 +682,8 @@ int sge_BlitTransparent(SDL_Surface *Src, SDL_Surface *Dest, Sint16 SrcX, Sint16
 	#endif
 
 	/* Set normal levels */
-	SDL_SetAlpha(Src,0,0);
-	SDL_SetColorKey(Src,0,0);
+	SDL_SetSurfaceAlphaMod(Src,0);
+	SDL_SetColorKey(Src,SDL_TRUE,0);
 
 	return ret;
 }
