@@ -15,13 +15,13 @@
  *  version 2 of the License, or (at your option) any later version. *
  *********************************************************************/
 
-#include "SDL.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
-#include <math.h>
 #include "sge_misc.h"
 
+#include <SDL2/SDL.h>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
 
 Uint32 delay_res=10;
 

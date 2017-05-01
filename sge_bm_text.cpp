@@ -21,21 +21,20 @@
 *  Thanks to Karl Bartel for the SFont format!
 */
 
-#include "SDL.h"
-#include <stdarg.h>
-#include <string.h>
-#include <math.h>
-#include <new>
 #include "sge_surface.h"
 #include "sge_bm_text.h"
 #include "sge_tt_text.h"
 #include "sge_textpp.h"
 
-#ifdef _SGE_HAVE_IMG
-#include <SDL_image.h>
-#endif
+#include <SDL2/SDL.h>
+#include <cmath>
+#include <cstdarg>
+#include <cstring>
+#include <new>
 
-using namespace std;
+#ifdef _SGE_HAVE_IMG
+#include <SDL2/SDL_image.h>
+#endif
 
 /* Globals used for sge_Update/sge_Lock (defined in sge_surface) */
 extern Uint8 _sge_update;
@@ -48,7 +47,7 @@ sge_bmpFont* sge_BF_CreateFont(SDL_Surface *surface, Uint8 flags)
 {
 	sge_bmpFont	*font;
 
-	font = new(nothrow) sge_bmpFont; if(font==NULL){SDL_SetError("SGE - Out of memory");return NULL;}
+	font = new(std::nothrow) sge_bmpFont; if(font==NULL){SDL_SetError("SGE - Out of memory");return NULL;}
 	
 	if(!(flags&SGE_BFNOCONVERT) && !(flags&SGE_BFSFONT)){    /* Get a converted copy */
 		SDL_assert(0 && "sge_BF_CreateFont");
@@ -120,7 +119,7 @@ sge_bmpFont* sge_BF_CreateFont(SDL_Surface *surface, Uint8 flags)
 		Sint16 x=0;
 		int i=0;
 		
-		font->CharPos = new(nothrow) Sint16[256];
+		font->CharPos = new(std::nothrow) Sint16[256];
 		if(!font->CharPos){SDL_SetError("SGE - Out of memory");sge_BF_CloseFont(font);return NULL;}
 		
 		Uint32 color = sge_GetPixel(fnt,0,0);  //get data color

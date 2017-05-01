@@ -18,8 +18,9 @@
 #ifndef sge_rotation_H
 #define sge_rotation_H
 
-#include "SDL.h"
 #include "sge_internal.h"
+
+#include <SDL2/SDL.h>
 
 /* Transformation flags */
 #define SGE_TAA SGE_FLAG1

@@ -18,8 +18,9 @@
 #ifndef sge_shape_H
 #define sge_shape_H
 
-#include "SDL.h"
 #include "sge_internal.h"
+
+#include <SDL2/SDL.h>
 
 #ifndef _SGE_NO_CLASSES
 

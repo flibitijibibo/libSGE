@@ -1,5 +1,10 @@
 This is a list of important changes in SGE's version history.
 
+010517:
+- Abs of unsigned values bug fixed.
+- Include SDL path fixed.
+- using namespace std removed.
+
 030809:
 -Better Makefiles (autodetects SDL, Freetype & SDL_Image).
 -Better library numbering (thanks Sam!).

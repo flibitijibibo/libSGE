@@ -15,15 +15,14 @@
  *  version 2 of the License, or (at your option) any later version. *
  *********************************************************************/
 
-#include "SDL.h"
-#include <stdio.h>
-#include <string.h>
-#include <new>
 #include "sge_collision.h"
 #include "sge_surface.h"
 #include "sge_shape.h"
 
-using namespace std;
+#include <SDL2/SDL.h>
+#include <cstdio>
+#include <cstring>
+#include <new>
 
 Uint8 sge_mask[8]={SGE_FLAG1,SGE_FLAG2,SGE_FLAG3,SGE_FLAG4,SGE_FLAG5,SGE_FLAG6,SGE_FLAG7,SGE_FLAG8};
 SDL_Rect _ua;
@@ -43,11 +42,11 @@ sge_cdata *sge_make_cmap(SDL_Surface *img)
 	Uint32 key;
 	int i;
 	
-	cdata=new(nothrow) sge_cdata;
+	cdata=new(std::nothrow) sge_cdata;
 	if(!cdata){SDL_SetError("SGE - Out of memory");return NULL;}
 	cdata->w=img->w; cdata->h=img->h;
 	offs=(img->w*img->h)/8;
-	cdata->map=new(nothrow) Uint8[offs+2];
+	cdata->map=new(std::nothrow) Uint8[offs+2];
 	if(!cdata->map){SDL_SetError("SGE - Out of memory");return NULL;}
 	memset(cdata->map,0x00,offs+2);
 	

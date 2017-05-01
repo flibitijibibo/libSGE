@@ -19,10 +19,11 @@
 *  Written with some help from Johan E. Thelin.
 */
 
-#include "SDL.h"
 #include "sge_surface.h"
 #include "sge_primitives.h"
 #include "sge_blib.h"
+
+#include <SDL2/SDL.h>
 
 #define SWAP(x,y,temp) temp=x;x=y;y=temp
 

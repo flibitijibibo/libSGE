@@ -18,9 +18,9 @@
 #ifndef sge_blib_H
 #define sge_blib_H
 
-#include "SDL.h"
 #include "sge_internal.h"
 
+#include <SDL2/SDL.h>
 
 #ifdef _SGE_C
 extern "C" {

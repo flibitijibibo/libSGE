@@ -21,16 +21,17 @@
 #ifndef sge_textpp_H
 #define sge_textpp_H
 
-#include "SDL.h"
 #include "sge_internal.h"
 
 #ifndef _SGE_NO_CLASSES
 
-#include <string>
-#include <stdio.h>
 #include "sge_tt_text.h"
 #include "sge_bm_text.h"
 #include "sge_shape.h"
+
+#include <SDL2/SDL.h>
+#include <string>
+#include <cstdio>
 
 //==================================================================================
 // Edits text from SDL_Event

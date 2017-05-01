@@ -18,9 +18,9 @@
 #ifndef sge_surface_H
 #define sge_surface_H
 
-#include "SDL.h"
 #include "sge_internal.h"
 
+#include <SDL2/SDL.h>
 
 /*
 *  Obsolete function names
