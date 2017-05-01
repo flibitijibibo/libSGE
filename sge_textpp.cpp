@@ -18,17 +18,14 @@
  *  version 2 of the License, or (at your option) any later version. *
  *********************************************************************/
 
-#include "SDL.h"
-#include <stdlib.h>
-#include <stdarg.h>
 #include "sge_surface.h"
 #include "sge_textpp.h"
 
+#include <SDL2/SDL.h>
+#include <cstdarg>
+#include <cstdlib>
+
 #ifndef _SGE_NO_CLASSES
-
-
-using namespace std;
-
 
 //==================================================================================
 // sge_TextEditor

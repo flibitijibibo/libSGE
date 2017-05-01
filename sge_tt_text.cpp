@@ -24,16 +24,17 @@
 */	
 
 
-#include "SDL.h"
-#include "SDL_endian.h"
-#include <stdlib.h>
-#include <string.h>
-#include <stdarg.h>
-#include <math.h>
 #include "sge_surface.h"
 #include "sge_primitives.h"
 #include "sge_tt_text.h"
 #include "sge_textpp.h"
+
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_endian.h>
+#include <cmath>
+#include <cstdarg>
+#include <cstdlib>
+#include <cstring>
 
 #ifndef _SGE_NOTTF
 #include <freetype/freetype.h>

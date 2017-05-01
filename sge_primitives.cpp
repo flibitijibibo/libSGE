@@ -20,14 +20,14 @@
 *  John Garrison's PowerPak	
 */
 
-#include "SDL.h"
-#include <math.h>
-#include <string.h>
-#include <stdarg.h>
-#include <stdlib.h>
 #include "sge_primitives.h"
 #include "sge_surface.h"
 
+#include <SDL2/SDL.h>
+#include <cmath>
+#include <cstdarg>
+#include <cstdlib>
+#include <cstring>
 
 /* Globals used for sge_Update/sge_Lock (defined in sge_surface) */
 extern Uint8 _sge_update;
